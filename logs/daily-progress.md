@@ -72,23 +72,36 @@
 
 ## Week 2: Python + Automation 🔄 IN PROGRESS
 
-### Day 8 - Python Setup ✅ COMPLETE
-- [x] Python 3.12.10 installed
-- [x] pip configured
-- [x] Virtual environment setup
-- [x] All tests passed
-- [x] Deliverables completed
+### Day 8 - AWS CLI & Boto3 Automation ✅ COMPLETE
+- [x] AWS CLI installed and configured
+- [x] IAM access keys created for programmatic access
+- [x] Python 3.12.10 configured
+- [x] Boto3 1.42.50 installed
+- [x] **Script 1:** EC2 Instance Reporter - Lists all EC2 with details, exports to CSV
+- [x] **Script 2:** S3 Bucket Manager - Create, upload, download, delete buckets
+- [x] **Script 3:** EC2 Controller - Start/stop/restart instances by tag
+- [x] All scripts tested successfully
+- [x] Full documentation and error handling
+- [x] Pushed to GitHub
 
 **Environment:**
-- Python Version: 3.12.10
-- Package Manager: pip
-- Virtual Environment: venv/conda ready
+- Python: 3.12.10
+- Boto3: 1.42.50
+- AWS CLI: Configured with IAM access keys
+- Region: us-east-1
+
+**Scripts Created:**
+1. `ec2_reporter.py` - Inventory management with CSV export
+2. `s3_manager.py` - S3 operations automation
+3. `ec2_controller.py` - Instance lifecycle control by tag
+
+**Portfolio Value:** Each script = $50-150 Upwork gig
+**Tech Level:** AI-assisted development, production-ready code
 
 ### Day 9-13
-- [ ] Boto3 setup and configuration
-- [ ] Resource monitoring scripts
-- [ ] Lambda functions
+- [ ] Resource monitoring with Lambda
 - [ ] Cost tracking automation
+- [ ] Multi-service automation
 
 ---
 
