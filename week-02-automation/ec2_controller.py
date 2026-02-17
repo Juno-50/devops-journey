@@ -2,7 +2,7 @@
 """
 EC2 Instance Controller
 Start, stop, or restart EC2 instances by tag
-Usage: python ec2_controller.py start --tag Environment=Dev
+Usage: python ec2_controller.py start --tag Environment=Test
 Author: Juno-50 | Day 8 - AWS Learning Journey
 """
 
