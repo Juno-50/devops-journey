@@ -63,7 +63,7 @@ python s3_manager.py
 **Usage:**
 ```bash
 # Stop dev instances
-python ec2_controller.py stop --tag Environment= est
+python ec2_controller.py stop --tag Environment=test
 
 # Start test servers
 python ec2_controller.py start --tag Name=WebServer
