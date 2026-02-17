@@ -28,7 +28,6 @@
 python ec2_reporter.py
 ```
 
-**Portfolio Value:** $75-150 (inventory management script)
 
 ---
 
@@ -48,7 +47,6 @@ python s3_manager.py
 # Interactive demo creates, uploads, lists, downloads, and cleans up
 ```
 
-**Portfolio Value:** $50-100 (S3 automation script)
 
 ---
 
@@ -65,16 +63,13 @@ python s3_manager.py
 **Usage:**
 ```bash
 # Stop dev instances
-python ec2_controller.py stop --tag Environment=Dev
+python ec2_controller.py stop --tag Environment= est
 
 # Start test servers
 python ec2_controller.py start --tag Name=WebServer
 
-# Preview without executing
-python ec2_controller.py restart --tag Project=Demo --dry-run
 ```
 
-**Portfolio Value:** $100-200 (instance scheduler)
 
 ---
 
