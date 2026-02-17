@@ -28,7 +28,7 @@
 python ec2_reporter.py
 ```
 
-**Portfolio Value:** $75-150 (inventory management script)
+**Use Case:** Inventory management, resource auditing, cost tracking
 
 ---
 
@@ -48,7 +48,7 @@ python s3_manager.py
 # Interactive demo creates, uploads, lists, downloads, and cleans up
 ```
 
-**Portfolio Value:** $50-100 (S3 automation script)
+**Use Case:** Automated backups, file distribution, content deployment
 
 ---
 
@@ -65,16 +65,16 @@ python s3_manager.py
 **Usage:**
 ```bash
 # Stop dev instances
-python ec2_controller.py stop --tag Environment=Dev
+python ec2_controller.py stop --tag Environment=test
 
 # Start test servers
-python ec2_controller.py start --tag Name=WebServer
+python ec2_controller.py start --tag Name=test-server
 
 # Preview without executing
 python ec2_controller.py restart --tag Project=Demo --dry-run
 ```
 
-**Portfolio Value:** $100-200 (instance scheduler)
+**Use Case:** Cost savings (stop dev servers overnight), maintenance windows
 
 ---
 
@@ -91,11 +91,6 @@ python ec2_controller.py restart --tag Project=Demo --dry-run
 
 ### Key Concepts Learned
 
-**AI-Assisted Development:**
-- Prompt engineering for code generation
-- Code review and customization
-- Understanding vs. memorizing
-
 **Boto3 Patterns:**
 - `boto3.client()` for service operations
 - Response structure parsing (nested dictionaries)
@@ -104,19 +99,19 @@ python ec2_controller.py restart --tag Project=Demo --dry-run
 
 **AWS Authentication:**
 - IAM access keys (programmatic access)
-- Default credential chain
+- Default credential chain (environment variables, config files)
 - Security best practices
 
 ---
 
 ### Deliverables
 
-✅ AWS CLI configured  
-✅ Boto3 installed and tested  
-✅ 3 automation scripts created  
-✅ All scripts tested and working  
-✅ Professional README documented  
-✅ Code pushed to GitHub  
+✅ AWS CLI configured
+✅ Boto3 installed and tested
+✅ 3 automation scripts created
+✅ All scripts tested and working
+✅ Professional README documented
+✅ Code pushed to GitHub
 
 ---
 
@@ -146,22 +141,3 @@ python ec2_controller.py restart --tag Project=Demo --dry-run
 - Multi-service automation
 - Integration of all learned skills
 - Production-ready pipeline
-
----
-
-## Upwork Offerings
-
-Based on Day 8 skills, you can now offer:
-
-| Service | Price Range | Skills |
-|---------|-------------|--------|
-| AWS EC2 Automation Script | $75-150 | Boto3, EC2 API |
-| S3 Bucket Management Tool | $50-100 | S3, Python |
-| Instance Scheduler | $100-200 | Lambda/EventBridge |
-| AWS Resource Inventory | $150-300 | Multi-service |
-
-**Competitive Advantage:**
-- AI-assisted development = faster delivery
-- Production-ready code with error handling
-- Professional documentation
-- GitHub portfolio visible to clients

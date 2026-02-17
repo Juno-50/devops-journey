@@ -96,7 +96,7 @@
 3. `ec2_controller.py` - Instance lifecycle control by tag
 
 **Portfolio Value:** Each script = $50-150 Upwork gig
-**Tech Level:** AI-assisted development, production-ready code
+**Tech Level:** Production-ready code, professional documentation
 
 ### Day 9-13
 - [ ] Resource monitoring with Lambda
