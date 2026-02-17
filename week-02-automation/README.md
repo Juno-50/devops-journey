@@ -144,19 +144,3 @@ python ec2_controller.py start --tag Name=WebServer
 
 ---
 
-## Upwork Offerings
-
-Based on Day 8 skills, you can now offer:
-
-| Service | Price Range | Skills |
-|---------|-------------|--------|
-| AWS EC2 Automation Script | $75-150 | Boto3, EC2 API |
-| S3 Bucket Management Tool | $50-100 | S3, Python |
-| Instance Scheduler | $100-200 | Lambda/EventBridge |
-| AWS Resource Inventory | $150-300 | Multi-service |
-
-**Competitive Advantage:**
-- AI-assisted development = faster delivery
-- Production-ready code with error handling
-- Professional documentation
-- GitHub portfolio visible to clients
