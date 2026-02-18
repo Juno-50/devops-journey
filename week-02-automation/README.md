@@ -115,29 +115,61 @@ python ec2_controller.py restart --tag Project=Demo --dry-run
 
 ---
 
-## Day 9-13: Planned Work
+## Day 9: Multi-Service Resource Reporter ✅ COMPLETE
 
-### Day 9: Resource Reporter
-- Multi-service inventory (EC2, S3, RDS, Lambda)
-- Cost analysis integration
-- Scheduled execution
+### Accomplishments
+- Node.js project with AWS SDK v3
+- Modular architecture with separation of concerns
+- Multi-service resource collection (EC2, S3, RDS)
+- Cost Explorer API integration
+- JSON and CSV report generation
+
+### Scripts Created
+| File | Purpose |
+|------|---------|
+| `generate-report.js` | Main orchestration script |
+| `aws-clients.js` | AWS service client factory |
+| `resource-collectors.js` | EC2, S3, RDS collection with pagination |
+| `cost-collector.js` | Cost Explorer API for monthly costs |
+| `file-helpers.js` | JSON/CSV file utilities |
+
+### Usage
+```bash
+cd day-09
+npm install
+node generate-report.js
+```
+
+### Output
+- `reports/aws-resources.json` - Complete inventory
+- `reports/ec2-instances.csv` - EC2 details
+- `reports/s3-buckets.csv` - S3 bucket list
+- `reports/rds-instances.csv` - RDS databases
+- `reports/service-costs.csv` - Cost breakdown
+
+### Technical Stack
+- Runtime: Node.js
+- Language: JavaScript (ES6+)
+- AWS SDK: v3 (modular clients)
+- Pattern: Async/await with Promise.all
+
+---
+
+## Day 10-13: Planned Work
 
 ### Day 10: Lambda Functions
 - Serverless automation
 - Event-driven architectures
 - API Gateway integration
 
-### Day 11: Cost Monitoring
-- AWS Cost Explorer API
+### Day 11: Advanced Cost Monitoring
 - Budget alerts
 - Resource optimization recommendations
 
 ### Day 12: Infrastructure Testing
 - Validation scripts
 - Compliance checking
-- Security auditing
 
 ### Day 13: Capstone Project
 - Multi-service automation
-- Integration of all learned skills
 - Production-ready pipeline
