@@ -1,6 +1,6 @@
 # Week 2: Python + AWS Automation
 
-**Status:** Day 8 Complete ✅ (5 days remaining)
+**Status:** Day 9 Complete ✅ (4 days remaining)
 
 ---
 
@@ -125,6 +125,7 @@ python ec2_controller.py restart --tag Project=Demo --dry-run
 - JSON and CSV report generation
 
 ### Scripts Created
+
 | File | Purpose |
 |------|---------|
 | `generate-report.js` | Main orchestration script |
@@ -134,6 +135,7 @@ python ec2_controller.py restart --tag Project=Demo --dry-run
 | `file-helpers.js` | JSON/CSV file utilities |
 
 ### Usage
+
 ```bash
 cd day-09
 npm install
@@ -141,6 +143,7 @@ node generate-report.js
 ```
 
 ### Output
+
 - `reports/aws-resources.json` - Complete inventory
 - `reports/ec2-instances.csv` - EC2 details
 - `reports/s3-buckets.csv` - S3 bucket list
@@ -148,6 +151,7 @@ node generate-report.js
 - `reports/service-costs.csv` - Cost breakdown
 
 ### Technical Stack
+
 - Runtime: Node.js
 - Language: JavaScript (ES6+)
 - AWS SDK: v3 (modular clients)
