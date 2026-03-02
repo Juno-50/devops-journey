@@ -118,10 +118,52 @@
 
 **Output:** Multi-service reports (JSON + CSV) with cost analysis
 
-### Day 10-13
-- [ ] Lambda functions
-- [ ] Scheduled automation
-- [ ] Capstone project
+### Day 10 - Weather Data Pipeline ✅ COMPLETE
+- [x] OpenWeatherMap API integration
+- [x] Multi-city weather fetching with retry logic
+- [x] S3 storage (date-based structure: YYYY/MM/DD/city_HHMMSS.json)
+- [x] Weather analytics (min/max/avg temperature)
+- [x] Data viewer script with filtering
+- [x] Scheduler for periodic execution
+- [x] Comprehensive error handling + logging
+- [x] Professional documentation
+
+**Scripts Created:**
+1. `weather_to_s3.py` - Main ingestion pipeline
+2. `weather_analytics.py` - Statistical analysis
+3. `weather_scheduler.py` - Periodic trigger
+4. `view_weather_data.py` - Data browser
+5. `requirements.txt` - Dependencies
+6. `.env.example` - Configuration template
+
+**Tech Stack:**
+- Python 3.x with requests, python-dotenv, boto3
+- OpenWeatherMap API (free tier)
+- AWS S3 (date-keyed storage)
+- Error handling: Retry with exponential backoff
+
+**Portfolio Value:** Multi-service pipeline = $200-500 Upwork gig
+
+---
+
+## Week 2 Summary (Days 8-10) ✅ COMPLETE
+
+| Day | Project | Status | Lines of Code |
+|-----|---------|--------|----------------|
+| 8 | Boto3 Scripts (EC2, S3, Controller) | ✅ | ~300 |
+| 9 | Multi-Service Reporter (Node.js) | ✅ | ~400 |
+| 10 | Weather Pipeline (Python) | ✅ | ~500 |
+| **Total** | **3 production-ready projects** | **✅** | **~1200** |
+
+**Deliverables:** 8 scripts, 3 README files, fully documented, all tested, pushed to GitHub.
+
+---
+
+### Day 11-14: Planned Work
+- [ ] Day 11: Lambda functions
+- [ ] Day 12: AWS Cost Monitor
+- [ ] Day 13: Portfolio cleanup
+- [ ] Day 14: REST DAY
 
 ---
 

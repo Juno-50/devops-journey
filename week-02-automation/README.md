@@ -1,6 +1,6 @@
 # Week 2: Python + AWS Automation
 
-**Status:** Day 9 Complete ✅ (4 days remaining)
+**Status:** Day 10 Complete ✅ (4 days remaining in Week 2)
 
 ---
 
@@ -159,21 +159,61 @@ node generate-report.js
 
 ---
 
-## Day 10-13: Planned Work
+## Day 10: Weather Data Pipeline ✅ COMPLETE
 
-### Day 10: Lambda Functions
-- Serverless automation
-- Event-driven architectures
-- API Gateway integration
+### Accomplishments
+- OpenWeatherMap API integration with retry logic
+- S3 storage with date-based key structure (YYYY/MM/DD/city_HHMMSS.json)
+- Weather analytics (min, max, avg temperature)
+- Data viewer for browsing stored JSON objects
+- Scheduler for periodic automation
 
-### Day 11: Advanced Cost Monitoring
+### Scripts Created
+
+| File | Purpose |
+|------|---------|
+| `weather_to_s3.py` | Main ingestion pipeline with error handling |
+| `weather_analytics.py` | Temperature statistics and trend analysis |
+| `weather_scheduler.py` | Periodic execution with configurable intervals |
+| `view_weather_data.py` | Browse/filter stored weather data in S3 |
+| `requirements.txt` | Dependencies (requests, python-dotenv, boto3) |
+| `.env.example` | Configuration template |
+
+### Architecture
+
+```
+OpenWeatherMap API → Python Pipeline → S3 Storage → Analytics/Viewer
+                          │
+                    Scheduler (Periodic)
+```
+
+### Configuration
+
+- **API Key:** OpenWeatherMap (free tier)
+- **S3 Bucket:** weather-data-bucket-2026
+- **Cities:** Configurable (default: NY, London, Tokyo, LA, Sydney)
+- **Interval:** Configurable (default: 15 minutes)
+
+---
+
+## Day 11-14: Planned Work (Lambda & Cost Monitoring)
+
+### Day 11: AWS Lambda Basics
+- Lambda function triggers (S3, API Gateway)
+- CloudWatch logs integration
+- Runtime environment setup
+
+### Day 12: AWS Cost Monitor Project
+- Lambda periodic checks
+- Cost Explorer API
+- DynamoDB storage
 - Budget alerts
-- Resource optimization recommendations
 
-### Day 12: Infrastructure Testing
-- Validation scripts
-- Compliance checking
+### Day 13: Portfolio Cleanup
+- GitHub README polish
+- Screenshot/diagram documentation
+- Professional presentation
 
-### Day 13: Capstone Project
-- Multi-service automation
-- Production-ready pipeline
+### Day 14: REST DAY + Week 3 Planning
+- Review Week 2 accomplishments
+- Scaffold Week 3 (Terraform)
