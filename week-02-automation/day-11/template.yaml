@@ -1,0 +1,176 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Weather API - REST API + Scheduled Collector
+
+Parameters:
+  OpenWeatherApiKey:
+    Type: String
+    NoEcho: true
+    Description: OpenWeather API key (get from https://openweathermap.org/api)
+  Cities:
+    Type: String
+    Default: "London,Paris,New York,Tokyo,Sydney"
+    Description: Comma-separated list of cities
+  CacheTtlSeconds:
+    Type: Number
+    Default: 900
+    Description: Cache TTL in seconds (default 15 minutes)
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 256
+    Runtime: python3.12
+
+Resources:
+  # API Gateway REST API
+  WeatherApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: WeatherApi
+      StageName: prod
+      Auth:
+        ApiKeyRequired: true
+        UsagePlan:
+          CreateUsagePlan: PER_API
+          Description: Usage plan for Weather API
+      Cors:
+        AllowMethods: "'GET,OPTIONS'"
+        AllowHeaders: "'Content-Type,x-api-key'"
+        AllowOrigin: "'*'"
+
+  # CORS Gateway Responses
+  WeatherApiGatewayResponse4xx:
+    Type: AWS::ApiGateway::GatewayResponse
+    Properties:
+      RestApiId: !Ref WeatherApi
+      ResponseType: DEFAULT_4XX
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,x-api-key'"
+        gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+
+  WeatherApiGatewayResponse5xx:
+    Type: AWS::ApiGateway::GatewayResponse
+    Properties:
+      RestApiId: !Ref WeatherApi
+      ResponseType: DEFAULT_5XX
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,x-api-key'"
+        gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+
+  # Lambda Function - REST API Handler
+  WeatherApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: weather-api-handler
+      Handler: weather_api.handler
+      CodeUri: lambda/
+      Description: Handles REST API requests for weather data
+      Environment:
+        Variables:
+          OPENWEATHER_API_KEY: !Ref OpenWeatherApiKey
+          S3_BUCKET_NAME: weather-data-bucket-2026
+          CITIES: !Ref Cities
+          CACHE_TTL_SECONDS: !Ref CacheTtlSeconds
+          DYNAMODB_TABLE: !Ref WeatherHistoryTable
+      Policies:
+        - S3CrudPolicy:
+            BucketName: weather-data-bucket-2026
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action: s3:ListBucket
+              Resource: arn:aws:s3:::weather-data-bucket-2026
+      Events:
+        Cities:
+          Type: Api
+          Properties:
+            RestApiId: !Ref WeatherApi
+            Path: /cities
+            Method: get
+        Weather:
+          Type: Api
+          Properties:
+            RestApiId: !Ref WeatherApi
+            Path: /weather
+            Method: get
+
+  # Lambda Function - Scheduled Collector
+  WeatherCollectorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: weather-collector-scheduled
+      Handler: weather_to_s3.lambda_handler
+      CodeUri: lambda/
+      Description: Collects weather data hourly and updates S3 cache
+      Timeout: 60
+      Environment:
+        Variables:
+          OPENWEATHER_API_KEY: !Ref OpenWeatherApiKey
+          S3_BUCKET_NAME: weather-data-bucket-2026
+          CITIES: !Ref Cities
+      Policies:
+        - S3CrudPolicy:
+            BucketName: weather-data-bucket-2026
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action: s3:ListBucket
+              Resource: arn:aws:s3:::weather-data-bucket-2026
+      Events:
+        HourlySchedule:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 hour)
+            Name: weather-collection-hourly
+            Description: Collect weather data every hour and update S3 cache
+            Enabled: true
+
+  # DynamoDB Table for Weather History
+  WeatherHistoryTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: WeatherHistory
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: city
+          AttributeType: S
+        - AttributeName: timestamp
+          AttributeType: N
+      KeySchema:
+        - AttributeName: city
+          KeyType: HASH
+        - AttributeName: timestamp
+          KeyType: RANGE
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+      Tags:
+        - Key: Project
+          Value: WeatherAPI
+
+Outputs:
+  ApiEndpoint:
+    Description: API Gateway REST API endpoint URL
+    Value: !Sub "https://${WeatherApi}.execute-api.${AWS::Region}.amazonaws.com/prod"
+    Export:
+      Name: WeatherApiEndpoint
+  
+  ApiId:
+    Description: API Gateway REST API ID
+    Value: !Ref WeatherApi
+    Export:
+      Name: WeatherApiId
+  
+  WeatherApiFunction:
+    Description: Weather API Lambda Function ARN
+    Value: !GetAtt WeatherApiFunction.Arn
+  
+  WeatherCollectorFunction:
+    Description: Weather Collector Lambda Function ARN
+    Value: !GetAtt WeatherCollectorFunction.Arn
+  
+  WeatherHistoryTable:
+    Description: DynamoDB Weather History Table Name
+    Value: !Ref WeatherHistoryTable

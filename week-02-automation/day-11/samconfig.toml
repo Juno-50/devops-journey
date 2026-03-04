@@ -1,0 +1,30 @@
+# SAM CLI configuration
+
+version = 0.1
+
+[default]
+[default.build]
+watch_exclude = ["tests", "events", "build", ".git"]
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.validate]
+parameters = {}
+capabilities = ["CAPABILITY_IAM", "CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND"]
+
+[default.deploy]
+[default.default_deploy_parameters]
+stack_name = "weather-api-complete"
+s3_bucket = ""
+s3_prefix = "weather-api"
+region = "us-east-1"
+confirm_changeset = false
+capabilities = ["CAPABILITY_IAM", "CAPABILITY_NAMED_IAM"]
+parameter_overrides = [
+  "OpenWeatherApiKey=PLACEHOLDER_SET_VIA_ENV",
+  "Cities=London,Paris,New York,Tokyo,Sydney",
+  "CacheTtlSeconds=900"
+]
+image_repositories = {}
