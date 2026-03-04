@@ -190,10 +190,6 @@
 
 **Week 2 Complete:** Days 8-12 = 5 production projects, ~2065 LOC, all tested & documented ✅
 
-### Day 13-14: Next Phase
-- [ ] Day 13: Portfolio Website & GitHub polish
-- [ ] Day 14: REST DAY + Plan Week 3 (Terraform)
-
 ---
 
 ## Notes Template
