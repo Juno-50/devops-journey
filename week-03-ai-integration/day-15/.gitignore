@@ -1,0 +1,4 @@
+.env
+conversation_*.txt
+__pycache__/
+venv/
