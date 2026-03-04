@@ -159,11 +159,40 @@
 
 ---
 
-### Day 11-14: Planned Work
-- [ ] Day 11: Lambda functions
-- [ ] Day 12: AWS Cost Monitor
-- [ ] Day 13: Portfolio cleanup
-- [ ] Day 14: REST DAY
+### Day 11 - Serverless REST API + Scheduled Collector ✅ COMPLETE
+- [x] API Gateway REST API with API key auth
+- [x] Lambda handler for /cities and /weather endpoints
+- [x] Scheduled collector (hourly EventBridge trigger)
+- [x] S3 caching (15-minute TTL)
+- [x] DynamoDB table for history
+- [x] SAM infrastructure as code
+- [x] Professional documentation
+
+**Tech Stack:** Python 3.12, Lambda, API Gateway, S3, DynamoDB, SAM
+**Deliverables:** weather_api.py (320 LOC), weather_to_s3.py (145 LOC), template.yaml, requirements.txt, .env.example
+**Portfolio Value:** $300-500
+
+---
+
+### Day 12 - DynamoDB Integration + Historical Analytics ✅ COMPLETE
+- [x] Enhanced collector with dual S3+DynamoDB writes
+- [x] DynamoDB table design (city + timestamp keys)
+- [x] Time-series weather history storage
+- [x] 90-day TTL auto-cleanup
+- [x] Atomic writes with error handling
+- [x] Comprehensive logging
+
+**Tech Stack:** Python 3.12, boto3, DynamoDB, CloudWatch
+**Deliverables:** weather_collector_v2.py (230 LOC), comprehensive README
+**Portfolio Value:** $400-600 (historical + analytics)
+
+---
+
+**Week 2 Complete:** Days 8-12 = 5 production projects, ~2065 LOC, all tested & documented ✅
+
+### Day 13-14: Next Phase
+- [ ] Day 13: Portfolio Website & GitHub polish
+- [ ] Day 14: REST DAY + Plan Week 3 (Terraform)
 
 ---
 
